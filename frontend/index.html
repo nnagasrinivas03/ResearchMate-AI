@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        ResearchMate AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+
+        <div>
+
+            <div class="brand">
+                ResearchMate AI
+            </div>
+
+            <div class="subtitle">
+                Real-Time Multi-Agent Research Assistant
+            </div>
+
+        </div>
+
+        <div
+            id="connectionStatus"
+            class="status offline"
+        >
+            ● OFFLINE
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="hero">
+
+            <div class="hero-label">
+                LIVE RESEARCH ENGINE
+            </div>
+
+            <h1>
+                Research smarter.
+                <span>Verify faster.</span>
+            </h1>
+
+            <p>
+                Search academic literature and live web sources,
+                compare evidence, detect conflicts and generate
+                citation-grounded research reports.
+            </p>
+
+        </section>
+
+
+        <section class="search-panel">
+
+            <input
+                id="topicInput"
+                type="text"
+                placeholder="Enter a research topic..."
+            >
+
+            <button
+                id="startButton"
+            >
+                START RESEARCH
+            </button>
+
+        </section>
+
+
+        <section class="agents-grid">
+
+            <div
+                class="agent-card"
+                data-agent="Web Researcher"
+            >
+                <div class="agent-icon">
+                    🌐
+                </div>
+
+                <div>
+                    <h3>
+                        Web Researcher
+                    </h3>
+
+                    <p>
+                        Live web retrieval
+                    </p>
+                </div>
+
+                <span class="agent-status">
+                    WAITING
+                </span>
+
+            </div>
+
+
+            <div
+                class="agent-card"
+                data-agent="arXiv Agent"
+            >
+
+                <div class="agent-icon">
+                    📚
+                </div>
+
+                <div>
+                    <h3>
+                        arXiv Agent
+                    </h3>
+
+                    <p>
+                        Academic paper retrieval
+                    </p>
+                </div>
+
+                <span class="agent-status">
+                    WAITING
+                </span>
+
+            </div>
+
+
+            <div
+                class="agent-card"
+                data-agent="Semantic Scholar"
+            >
+
+                <div class="agent-icon">
+                    🔬
+                </div>
+
+                <div>
+                    <h3>
+                        Semantic Scholar
+                    </h3>
+
+                    <p>
+                        Literature discovery
+                    </p>
+                </div>
+
+                <span class="agent-status">
+                    WAITING
+                </span>
+
+            </div>
+
+
+            <div
+                class="agent-card"
+                data-agent="Source Reader"
+            >
+
+                <div class="agent-icon">
+                    📖
+                </div>
+
+                <div>
+                    <h3>
+                        Source Reader
+                    </h3>
+
+                    <p>
+                        Full-text extraction
+                    </p>
+                </div>
+
+                <span class="agent-status">
+                    WAITING
+                </span>
+
+            </div>
+
+
+            <div
+                class="agent-card"
+                data-agent="Evidence Agent"
+            >
+
+                <div class="agent-icon">
+                    🧠
+                </div>
+
+                <div>
+                    <h3>
+                        Evidence Agent
+                    </h3>
+
+                    <p>
+                        Evidence extraction
+                    </p>
+                </div>
+
+                <span class="agent-status">
+                    WAITING
+                </span>
+
+            </div>
+
+
+            <div
+                class="agent-card"
+                data-agent="Conflict Agent"
+            >
+
+                <div class="agent-icon">
+                    ⚔️
+                </div>
+
+                <div>
+                    <h3>
+                        Conflict Agent
+                    </h3>
+
+                    <p>
+                        Contradiction detection
+                    </p>
+                </div>
+
+                <span class="agent-status">
+                    WAITING
+                </span>
+
+            </div>
+
+
+            <div
+                class="agent-card"
+                data-agent="Writer Agent"
+            >
+
+                <div class="agent-icon">
+                    ✍️
+                </div>
+
+                <div>
+                    <h3>
+                        Writer Agent
+                    </h3>
+
+                    <p>
+                        Citation-grounded writing
+                    </p>
+                </div>
+
+                <span class="agent-status">
+                    WAITING
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-grid">
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        Live Activity
+                    </h2>
+
+                    <span>
+                        REAL-TIME
+                    </span>
+
+                </div>
+
+                <div
+                    id="activity"
+                    class="activity"
+                >
+
+                    <div class="empty">
+                        Start a research query to see
+                        live agent activity.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        Research Statistics
+                    </h2>
+
+                </div>
+
+                <div class="stats">
+
+                    <div class="stat">
+
+                        <strong
+                            id="sourceCount"
+                        >
+                            0
+                        </strong>
+
+                        <span>
+                            SOURCES
+                        </span>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <strong
+                            id="evidenceCount"
+                        >
+                            0
+                        </strong>
+
+                        <span>
+                            EVIDENCE
+                        </span>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <strong
+                            id="conflictCount"
+                        >
+                            0
+                        </strong>
+
+                        <span>
+                            CONFLICTS
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Retrieved Sources
+                </h2>
+
+            </div>
+
+            <div
+                id="sources"
+                class="sources"
+            >
+
+                <div class="empty">
+                    No sources retrieved yet.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Conflicting Evidence
+                </h2>
+
+            </div>
+
+            <div
+                id="conflicts"
+                class="conflicts"
+            >
+
+                <div class="empty">
+                    No conflicts detected yet.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel report-panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Final Research Report
+                </h2>
+
+                <button
+                    id="copyButton"
+                    class="small-button"
+                >
+                    COPY
+                </button>
+
+            </div>
+
+            <article
+                id="report"
+                class="report"
+            >
+
+                <div class="empty">
+                    Your research report will appear here.
+                </div>
+
+            </article>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+
+</html>
